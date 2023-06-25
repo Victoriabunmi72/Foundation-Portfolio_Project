@@ -1,6 +1,8 @@
-from flask import Flask
+from flask import Flask.request, render_template
+import pickle
 
 app = Flask(__name__)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
