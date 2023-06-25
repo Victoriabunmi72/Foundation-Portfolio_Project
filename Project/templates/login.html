@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Login Page</title>
 </head>
-<body>
-    <h1>Login</h1>
-    <form method="POST" action="/login">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
+<body bgcolor="purple">
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
+<form method="POST" action="/login">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" required><br>
 
-        <input type="submit" value="Login">
-    </form>
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required><br>
+
+<input type="submit" value="Login">
+</form>
+<h1 >{{info}}</h1>
+
 </body>
 </html>
