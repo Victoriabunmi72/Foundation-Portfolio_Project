@@ -4,12 +4,14 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, log
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
+from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+bcrypt = Bcrypt(app)
 app.config['SECRET_KEY'] = 'thisisasecretkey'
 
 
@@ -25,13 +27,17 @@ def load_user(user_id):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), nullable=False, unique=True)
+    username = db.Column(db.String(50), nullable=False, unique=True)
+    email = db.Column(db.String(120), nullable=False, unique=True)
     password = db.Column(db.String(80), nullable=False)
 
 
 class RegisterForm(FlaskForm):
     username = StringField(validators=[
                            InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
+
+    email = StringField(validators=[
+                        InputRequired(), Email()], render_kw={"placeholder": "Email"})
 
     password = PasswordField(validators=[
                              InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
