@@ -6,16 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+
+<style>
+
+body {
+
+background-image: url('https://soboben-chiryo.com/medical/images/img05.jpg');
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size:100% 100%;
+
+}
+
+</style>
 </head>
 
-<body bgcolor="brown">
+<body>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
     <h1>Register With Us.</h1>
 
     <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        {{ form.username }}
-        {{ form.password }}
-        {{ form.submit }}
+	    {{ form.hidden_tag() }}
+	    {{ form.username }} <br>
+	    {{ form.email }} <br>
+	    {{ form.password }} <br>
+	    {{ form.submit }} <br>
     </form>
 
     <a href="{{ url_for('login') }}">Already have an account? Log In</a>

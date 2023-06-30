@@ -6,17 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+
+<style>
+
+body {
+
+background-image: url('https://soboben-chiryo.com/medical/images/img05.jpg');
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size:100% 100%;
+
+}
+
+</style>
+
 </head>
 
 <body>
-    <h1 style="background-color:LightGray;">LightGray</h1>>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
     <h1>Enter Your Credentials.</h1>
 
     <form method="POST" action="/login">
-	{{ form.hidden_tag() }}
-        {{ form.username }}
-        {{ form.password }}
-        {{ form.submit }}
+	    {{ form.hidden_tag() }} <br>
+	    {{ form.username }} <br>
+	    {{ form.email }} <br>
+	    {{ form.password }} <br>
+	    {{ form.submit }} <br>
     </form>
     <h1 >{{info}}</h1>
 
